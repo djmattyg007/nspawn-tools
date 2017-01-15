@@ -12,8 +12,6 @@ from humanfriendly import Timer
 import parse
 from typing import Tuple
 
-from nspawn_tools.proc import UnixProcess
-
 
 def find_pid(machine: str) -> int:
     cmd = executor.ExternalCommand("machinectl show {0}".format(machine), capture=True, capture_stderr=True, check=False)
