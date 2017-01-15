@@ -10,6 +10,7 @@
 import executor
 from humanfriendly import Timer
 import parse
+from proc.unix import UnixProcess
 from typing import Tuple
 
 
