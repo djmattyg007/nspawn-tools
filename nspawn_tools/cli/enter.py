@@ -15,15 +15,16 @@ import sys
 from nspawn_tools.machine import NspawnMachine
 
 
-def _main(machine_name: str, no_network: bool=False):
+def _main(machine_name: str, no_network: bool=False, no_pid: bool=False):
     machine = NspawnMachine(machine_name)
-    machine.nsenter(not no_network)
+    machine.nsenter(not no_network, not no_pid)
 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("machine_name", help="The name of the nspawn machine to gracefully terminate")
     parser.add_argument("-n", "--no-network", help="Don't enter the network namespace for the given machine", action="store_true")
+    parser.add_argument("-p", "--no-pid", help="Don't enter the PID namespace for the given machine", action="store_true")
     args = parser.parse_args()
 
     try:

@@ -7,4 +7,4 @@
 # project is distributed without any warranty. Please see LICENSE.txt for the
 # full text of the license.
 
-__VERSION__ = "1.0.0"
+__VERSION__ = "1.1.0"

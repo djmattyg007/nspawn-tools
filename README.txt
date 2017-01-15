@@ -25,13 +25,13 @@ To use nspawn-enter, run it like so:
 
   nspawn-enter mymachinename
 
-If you don't wish to enter the network namespace of the leader process, you can
-pass the --no-network flag. I added this to aid debugging of networking issues
-within the container (for example, to be able to install additional packages
-inside the container when networking inside the container is not operational),
-and therefore it is not generic. If someone wants to provide a patch to make
-this generic for all namespace flags supported by nsenter, I will be happy to
-consider it.
+It is possible to avoid entering some namespaces of the leader process. You can
+pass the --no-network flag to avoid entering the network namespace. You can pass
+the --no-pid flag to avoid entering the PID namespace. I added these to aid
+debugging of issues within the container (especially networking issues). It can
+aid things such as installing packages too. As a result, these flags are not
+generic. If someone wants to provide a patch to make this generic for all
+namespace flags supported by nsenter, I will be happy to consider it.
 
 
 nspawn-stop

@@ -34,10 +34,12 @@ class NspawnMachine(object):
         self._machine = machine
         self._process = UnixProcess(pid=find_pid(machine))
 
-    def nsenter(self, network: bool=True):
+    def nsenter(self, network: bool=True, pid: bool=True):
         cmd_line = "nsenter --target {0} --mount --uts --ipc".format(self._process.pid)
         if network:
             cmd_line += " --net"
+        if pid:
+            cmd_line += " --pid"
         cmd = executor.ExternalCommand(cmd_line, check=False, tty=True)
         executor.execute_prepared(cmd)
 
